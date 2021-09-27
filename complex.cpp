@@ -1,9 +1,5 @@
-//sum, sub, mult, div, pow, Conjugate, log, sqrt, abs
-
-#include <stdio.h>
 #include <iostream>
-#include <math.h>
-//#include <doctest.h>
+#include <cmath>
 
 class Complex {
     double re;
@@ -40,28 +36,28 @@ public:
         return (*this);
     }
 
-    Complex operator+(Complex a){
+    const Complex operator+(const Complex& a){
         Complex temp;
         temp.re = re + a.re;
         temp.im = im + a.im;
         return temp;
     }
 
-    Complex operator-(Complex a){
+    const Complex operator-(const Complex& a){
         Complex temp;
         temp.re = re - a.re;
         temp.im = im - a.im;
         return temp;
     }
 
-    Complex operator*(Complex a){
+    const Complex operator*(const Complex& a){
         Complex temp;
         temp.re = re*a.re - im*a.im;
         temp.im = im*a.re + re*a.im;
         return temp;
     }
 
-    Complex operator/(Complex a){
+    const Complex operator/(const Complex& a){
         Complex temp;
         float abs = (a.re*a.re + a.im*a.im);
         temp.re = (re*a.re + im*a.im) / abs;
