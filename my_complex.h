@@ -1,46 +1,48 @@
-#ifndef Documents_Huawei_My_complex_h
-#define Documents_Huawei_My_complex_h
+#ifndef MY_COMPLEX_H
+#define MY_COMPLEX_H
 
-struct Complex {
+struct Complex
+{
     double re;
-    double im;    
+    double im;
 
-    Complex();
-    Complex(double val_re, double val_im);
-    Complex(const Complex& z);
-    ~Complex();
+    Complex(double other_re, double other_im);
+    Complex(const Complex &other);
+
+    Complex &operator=(const Complex &rhs);
+    Complex operator+(const Complex &rhs) const;
+    Complex operator+(double rhs) const;
+    Complex operator-(const Complex &rhs) const;
+    Complex operator-(double rhs) const;
+    Complex operator*(const Complex &rhs) const;
+    Complex operator*(double rhs) const;
+    Complex operator/(const Complex &rhs) const;
+    Complex operator/(double rhs) const;
+
+    Complex &operator+=(const Complex &rhs);
+    Complex &operator-=(const Complex &rhs);
+    Complex &operator*=(const Complex &rhs);
+    Complex &operator/=(const Complex &rhs);
+    Complex &operator+=(double rhs);
+    Complex &operator-=(double rhs);
+    Complex &operator*=(double rhs);
+    Complex &operator/=(double rhs);
+
+    Complex operator+() const;
+    Complex operator-() const;
+
+    bool operator==(const Complex &rhs) const;
+    bool operator!=(const Complex &rhs) const;
 
     void print();
-    double abs()const;
-
-    Complex& operator=(const Complex& z);
-    Complex operator+(const Complex& z)const;
-    Complex operator+(double rhs)const;
-    Complex operator-(const Complex& z)const;
-    Complex operator-(double rhs)const;
-    Complex operator*(const Complex& z)const;
-    Complex operator*(double rhs)const;
-    Complex operator/(const Complex& z)const;
-    Complex operator/(double rhs)const;
-
-    Complex& operator+=(const Complex& z);
-    Complex& operator-=(const Complex& z);
-    Complex& operator*=(const Complex& z);
-    Complex& operator/=(const Complex& z);
-    
-    Complex operator+()const;
-    Complex operator-()const;
-
-    bool operator == (const Complex& z)const;
-    bool operator != (const Complex& z)const;
-
-    Complex conjugate()const;
-    Complex operator^(int c) const;
+    double abs() const;
+    Complex conjugate() const;
+    Complex operator^(int exp) const;
 };
 
-Complex operator+(double lhs, const Complex& z);
-Complex operator-(double lhs, const Complex& z);
-Complex operator*(double lhs, const Complex& z);
-Complex operator/(double lhs, const Complex& z);
-#endif
+Complex operator+(double lhs, const Complex &rhs);
+Complex operator-(double lhs, const Complex &rhs);
+Complex operator*(double lhs, const Complex &rhs);
+Complex operator/(double lhs, const Complex &rhs);
 
+#endif // MY_COMPLEX_H
